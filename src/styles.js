@@ -653,6 +653,7 @@ export const styles = css`
   .popup .chips button.on,.popup .form .f .chips button.on,.settings .chips button.on,.settings .f .chips button.on{background:rgba(255,255,255,.9);color:#1d1d1f;border-color:transparent;opacity:1}
   .popup .chips,.settings .chips{gap:4px}
 
+  .scroll{display:contents}
   /* ===== tablet portrait & phone ===== */
   @media (max-width:900px){
     :host(.in-card){position:relative;height:100%}
@@ -827,6 +828,13 @@ export const styles = css`
     .banner{position:absolute;padding:14px}
     .empty{position:static;padding:0 var(--pad) 40px}
     .page,.settings{position:static;flex:1;min-height:0;overflow:auto;padding-top:calc(88px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));padding-bottom:calc(90px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)))}
+    /* whole page scrolls (title + cards); only the nav pills and the bottom bar stay put. Content fades out below the pills and in above the bottom bar. */
+    :host{--navb:calc(66px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));--botb:calc(64px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)));--scrollmask:linear-gradient(to bottom,transparent var(--navb),#000 calc(var(--navb) + 20px),#000 calc(100% - var(--botb) - 30px),transparent calc(100% - var(--botb)))}
+    :host([island]){--navb:calc(var(--safe-area-inset-top, env(safe-area-inset-top, 0px)) - 8px)}
+    .scroll{position:absolute;inset:0;display:flex;flex-direction:column;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain;touch-action:pan-y;scrollbar-width:none;-webkit-mask-image:var(--scrollmask);mask-image:var(--scrollmask)}
+    .scroll::-webkit-scrollbar{display:none}
+    .scroll .strip{flex:none;min-height:auto;overflow:visible}
+    .page,.settings{-webkit-mask-image:var(--scrollmask);mask-image:var(--scrollmask)}
     /* iPhone with Dynamic Island (host gets [island], see panel.js): nav pills sit left and right of the island, everything below moves up */
     :host([island]) .nav{top:calc(var(--safe-area-inset-top, env(safe-area-inset-top, 0px)) - 46px);left:26px;right:26px;height:38px;grid-template-columns:minmax(0,1fr) 140px minmax(0,1fr);grid-column-gap:0}
     :host([island]) .nav>*{height:38px}
