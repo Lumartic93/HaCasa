@@ -9338,10 +9338,16 @@ zodiac-virgo|horoscope`;var ms=null,Zc=()=>ms||(ms=hs.split(`
     .empty{position:static;padding:0 var(--pad) 40px}
     .page,.settings{position:static;flex:1;min-height:0;overflow:auto;padding-top:calc(88px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));padding-bottom:calc(90px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)))}
     /* iPhone with Dynamic Island (host gets [island], see panel.js): nav pills sit left and right of the island, everything below moves up */
-    :host([island]) .nav{top:calc(var(--safe-area-inset-top, env(safe-area-inset-top, 0px)) - 50px);grid-template-columns:minmax(0,1fr) 130px minmax(0,1fr);grid-column-gap:0}
-    :host([island]) .nav .logo{grid-column:1;grid-row:1}
-    :host([island]) .nav .people{grid-column:3;grid-row:1;justify-self:start}
-    :host([island]) .nav .alarm{grid-column:3;grid-row:1;justify-self:end}
+    :host([island]) .nav{top:calc(var(--safe-area-inset-top, env(safe-area-inset-top, 0px)) - 46px);left:26px;right:26px;height:38px;grid-template-columns:minmax(0,1fr) 140px minmax(0,1fr);grid-column-gap:0}
+    :host([island]) .nav>*{height:38px}
+    :host([island]) .nav .logo{grid-column:1;grid-row:1;gap:8px}
+    :host([island]) .nav .logo .mark{width:38px;height:38px;border-radius:12px}
+    :host([island]) .nav .logo .mark img.ico{width:19px;height:19px}
+    :host([island]) .nav .logo{font-size:15px}
+    :host([island]) .nav .people{grid-column:3;grid-row:1;justify-self:start;min-width:0;padding:0 10px;gap:5px}
+    :host([island]) .nav .people ha-icon{--mdc-icon-size:16px}
+    :host([island]) .nav .alarm{grid-column:3;grid-row:1;justify-self:end;min-width:0;padding:0 11px;gap:6px}
+    :host([island]) .nav .alarm ha-icon{--mdc-icon-size:16px}
     :host([island]) .title{padding-top:calc(18px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)))}
     :host([island]) .page,:host([island]) .settings{padding-top:calc(18px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)))}
   }
