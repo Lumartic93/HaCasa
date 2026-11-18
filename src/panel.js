@@ -567,7 +567,8 @@ class HacasaNova extends LitElement {
   renderTitle(temp, title, sub, items, extra = nothing, pageKey = "home", aside = nothing, hum = null) {
     const i = items.length ? this.tick % items.length : 0;
     const date = new Date().toLocaleDateString(locale(), { weekday: "long", day: "numeric", month: "long" });
-    const eyebrow = [date, temp != null ? tw(t("{t}° binnen", { t: temp.toFixed(1) })) : "", hum != null ? t("{h}% luchtvochtigheid", { h: Math.round(hum) }) : ""].filter(Boolean);
+    const home = pageKey === "home"; // Startseite: nur das Datum, ohne Innentemperatur und Luftfeuchtigkeit
+    const eyebrow = [date, !home && temp != null ? tw(t("{t}° binnen", { t: temp.toFixed(1) })) : "", !home && hum != null ? t("{h}% luchtvochtigheid", { h: Math.round(hum) }) : ""].filter(Boolean);
     return html`<section class=${classMap({ title: true, aside: aside !== nothing, editing: this.editing(pageKey) })} ${pressDir(this, { tap: () => {}, hold: () => canEdit(this) ? this.startEdit(pageKey) : this.openPopup({ type: "page", key: pageKey }) })}>
       <div class="tl">
         <div class="temp">${eyebrow.map((x, k) => html`${k ? html`<i class="dt"></i>` : nothing}<span>${x}</span>`)}</div>
