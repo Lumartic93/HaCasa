@@ -1,3 +1,5 @@
+> **Fork:** This is a personal, customised fork of [damianeickhoff/HaCasa](https://github.com/damianeickhoff/HaCasa) (MIT). See [FORK.md](FORK.md) for what differs. Documentation, Discord and discussions linked below belong to the original project.
+
 <div align="center">
 
 <img src="https://raw.githubusercontent.com/damianeickhoff/HaCasa/main/docs/assets/header.webp" alt="HaCasa Nova: a modern, room-first panel for your Home Assistant" width="100%">
@@ -79,7 +81,7 @@ You need Home Assistant **2024.4 or newer**. HaCasa Nova can run as its own side
 
 1. Open **HACS** in Home Assistant.
 2. Open the menu (⋮, top right) and choose **Custom repositories**.
-3. Add `https://github.com/damianeickhoff/HaCasa` with type **Dashboard**.
+3. Add `https://github.com/Lumartic93/HaCasa` with type **Dashboard**.
 4. Search for **HaCasa Nova**, open it and choose **Download**.
 5. Reload your browser when HACS asks.
 
