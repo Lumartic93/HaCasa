@@ -826,6 +826,13 @@ export const styles = css`
     .banner{position:absolute;padding:14px}
     .empty{position:static;padding:0 var(--pad) 40px}
     .page,.settings{position:static;flex:1;min-height:0;overflow:auto;padding-top:calc(88px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)));padding-bottom:calc(90px + var(--safe-area-inset-bottom, env(safe-area-inset-bottom, 0px)))}
+    /* iPhone with Dynamic Island (host gets [island], see panel.js): nav pills sit left and right of the island, everything below moves up */
+    :host([island]) .nav{top:calc(var(--safe-area-inset-top, env(safe-area-inset-top, 0px)) - 50px);grid-template-columns:minmax(0,1fr) 130px minmax(0,1fr);grid-column-gap:0}
+    :host([island]) .nav .logo{grid-column:1;grid-row:1}
+    :host([island]) .nav .people{grid-column:3;grid-row:1;justify-self:start}
+    :host([island]) .nav .alarm{grid-column:3;grid-row:1;justify-self:end}
+    :host([island]) .title{padding-top:calc(18px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)))}
+    :host([island]) .page,:host([island]) .settings{padding-top:calc(18px + var(--safe-area-inset-top, env(safe-area-inset-top, 0px)))}
   }
   @media (min-width:600px) and (max-width:900px){ .strip{grid-template-columns:1fr 1fr 1fr} }
   ${unsafeCSS(pageStyles)}

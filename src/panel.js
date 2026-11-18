@@ -56,6 +56,9 @@ class HacasaNova extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.loadConfig();
+    // iPhone with Dynamic Island: a large top safe area means the nav pills fit left and right of the island
+    const probe = document.createElement("div"); probe.style.cssText = "position:fixed;top:0;visibility:hidden;padding-top:env(safe-area-inset-top,0px)"; document.body.append(probe);
+    this.toggleAttribute("island", probe.offsetHeight >= 50); probe.remove();
     this._clock = setInterval(() => { this.now = clock(); }, 15000);
     this._ticker = setInterval(() => { this.tick++; }, 4000);
     this._onKey = e => { if (e.key === "Escape") { if (this.iconPick) { this.iconPick = null; return; } if (this.popup?.menu) { this.popup = { ...this.popup, menu: false }; return; } if (!this.popup && this.edit) { this.stopEdit(); return; } this.popup = null; this.search = ""; this.searchOpen = false; } };
