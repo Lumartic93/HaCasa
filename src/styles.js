@@ -757,7 +757,8 @@ export const styles = css`
     .card .i{width:26px;height:26px;margin-left:-2px}
     .card .i img.ico,.card .i ha-icon.own{width:26px;height:26px}
     .card .i ha-icon{--mdc-icon-size:30px;margin:-2px}
-    .card .c{font-size:9px;letter-spacing:1.2px;height:26px}
+    .card .c{font-size:9px;letter-spacing:1.2px;height:26px;max-width:calc(100% - var(--cp) * 2 - 34px)}   /* never run over the icon on the left, long labels get an ellipsis */
+    .card.people{width:auto;min-width:0;max-width:none;justify-self:stretch}
     .card .n{font-size:14px}
     .card .s{font-size:11px;margin-top:2px}
     .card .s.big{font-size:24px;letter-spacing:-1px}
